@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Library, Archive } from "lucide-react";
+import { Library, Archive, Home } from "lucide-react";
 
 const Navbar = () => {
   return (
@@ -9,6 +9,10 @@ const Navbar = () => {
         <span className="text-[#ea384c]">thinq</span>.blog
       </Link>
       <div className="flex gap-6">
+        <Link to="/" className="text-gray-600 hover:text-gray-900 transition-colors flex items-center gap-2">
+          <Home className="w-4 h-4" />
+          home
+        </Link>
         <Link to="/library" className="text-gray-600 hover:text-gray-900 transition-colors flex items-center gap-2">
           <Library className="w-4 h-4" />
           library
