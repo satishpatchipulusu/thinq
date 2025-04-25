@@ -12,6 +12,18 @@ const ArticleReader = () => {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
+  const saveToReadHistory = (article: { title: string; url: string }) => {
+    const storedArticles = localStorage.getItem('readArticles');
+    const articles = storedArticles ? JSON.parse(storedArticles) : [];
+    
+    articles.push({
+      ...article,
+      timestamp: Date.now()
+    });
+    
+    localStorage.setItem('readArticles', JSON.stringify(articles));
+  };
+
   const fetchArticle = async () => {
     if (!url) {
       toast({
@@ -24,12 +36,13 @@ const ArticleReader = () => {
     setLoading(true);
     try {
       // For now, we'll use a mock response
-      // In a real app, this would call an API endpoint
       setTimeout(() => {
-        setArticle({
+        const mockArticle = {
           title: "Sample Article",
-          content: "This is a sample article content. In a real implementation, this would be the actual content from the provided URL. The content would be cleaned and formatted for optimal reading experience."
-        });
+          content: "This is a sample article content. In a real implementation, this would be the actual content from the provided URL."
+        };
+        setArticle(mockArticle);
+        saveToReadHistory({ title: mockArticle.title, url: url });
         setLoading(false);
       }, 1000);
     } catch (error) {
