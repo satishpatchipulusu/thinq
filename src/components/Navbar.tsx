@@ -1,7 +1,8 @@
 
 import { Link } from "react-router-dom";
-import { Library, Archive, Home } from "lucide-react";
+import { Library, Archive, Home, Eye, EyeOff } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Toggle } from "@/components/ui/toggle";
 
 const Navbar = () => {
   const [focusMode, setFocusMode] = useState(false);
@@ -26,22 +27,15 @@ const Navbar = () => {
             }
           }, 150);
         }
-      }, 2000);
+      }, 150);
+    }, 2000);
 
     return () => clearTimeout(timeout1);
   }, []);
 
-  const toggleFocusMode = () => {
-    setFocusMode(!focusMode);
-  };
-
   return (
     <nav className="flex justify-between items-center py-6 px-8 w-full">
-      <Link 
-        to="/" 
-        className="font-lora text-xl font-semibold text-gray-900 cursor-pointer"
-        onClick={toggleFocusMode}
-      >
+      <Link to="/" className="font-lora text-xl font-semibold text-gray-900">
         <span className={`${brandText === "blog" ? "text-gray-600" : "text-[#ea384c]"}`}>{brandText}</span>.blog
       </Link>
       <div className="flex gap-6">
@@ -57,6 +51,14 @@ const Navbar = () => {
           <Archive className="w-4 h-4" />
           archive
         </Link>
+        <Toggle 
+          aria-label="Toggle focus mode"
+          className="text-gray-600 hover:text-gray-900"
+          pressed={focusMode}
+          onPressedChange={setFocusMode}
+        >
+          {focusMode ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+        </Toggle>
       </div>
     </nav>
   );
