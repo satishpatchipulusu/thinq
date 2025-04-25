@@ -1,42 +1,19 @@
 
 import { Link } from "react-router-dom";
-import { Library, Archive, Home, Eye, EyeOff } from "lucide-react";
-import { useState, useEffect } from "react";
-import { Toggle } from "@/components/ui/toggle";
+import { Library, Archive, Home } from "lucide-react";
+import { useState } from "react";
 
 const Navbar = () => {
   const [focusMode, setFocusMode] = useState(false);
-  const [brandText, setBrandText] = useState("thinq");
   
-  useEffect(() => {
-    const timeout1 = setTimeout(() => {
-      let text = "thinq";
-      const deleteInterval = setInterval(() => {
-        if (text.length > 0) {
-          text = text.slice(0, -1);
-          setBrandText(text);
-        } else {
-          clearInterval(deleteInterval);
-          let newText = "";
-          const typeInterval = setInterval(() => {
-            if (newText.length < 4) {
-              newText += "blog"[newText.length];
-              setBrandText(newText);
-            } else {
-              clearInterval(typeInterval);
-            }
-          }, 150);
-        }
-      }, 150);
-    }, 2000);
-
-    return () => clearTimeout(timeout1);
-  }, []);
-
   return (
     <nav className="flex justify-between items-center py-6 px-8 w-full">
-      <Link to="/" className="font-lora text-xl font-semibold text-gray-900">
-        <span className={`${brandText === "blog" ? "text-gray-600" : "text-[#ea384c]"}`}>{brandText}</span>.blog
+      <Link 
+        to="/" 
+        onClick={() => setFocusMode(!focusMode)} 
+        className="font-lora text-xl font-semibold text-[#ea384c]"
+      >
+        thinq.blog
       </Link>
       <div className="flex gap-6">
         <Link to="/" className={`${focusMode ? "opacity-0" : ""} text-gray-600 hover:text-gray-900 transition-colors flex items-center gap-2`}>
@@ -51,14 +28,6 @@ const Navbar = () => {
           <Archive className="w-4 h-4" />
           archive
         </Link>
-        <Toggle 
-          aria-label="Toggle focus mode"
-          className="text-gray-600 hover:text-gray-900"
-          pressed={focusMode}
-          onPressedChange={setFocusMode}
-        >
-          {focusMode ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-        </Toggle>
       </div>
     </nav>
   );
