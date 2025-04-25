@@ -46,7 +46,8 @@ const ArticleReader = () => {
     <div className="min-h-screen bg-white p-4 md:p-8">
       <div className="max-w-2xl mx-auto space-y-12">
         <div className="space-y-6">
-          <h1 className="font-lora text-3xl font-semibold text-gray-900">Reader View</h1>
+          <h1 className="font-lora text-3xl font-semibold text-gray-900">Let's read</h1>
+          <p className="text-gray-600 text-lg">Simply paste a link for the article you'd like to read and you're set!</p>
           <div className="flex gap-2">
             <Input
               type="url"
