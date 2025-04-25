@@ -79,7 +79,7 @@ export default {
         },
         'accordion-up': {
           from: {
-            height: 'var(--radix-accordion-content-height)'
+            height: '0'
           },
           to: {
             height: '0'
@@ -100,8 +100,22 @@ export default {
             },
           },
         },
-      }
-    }
+      },
+      fontFamily: {
+        lora: ['Lora', 'serif'],
+      },
+      typography: (theme: any) => ({
+        DEFAULT: {
+          css: {
+            'font-family': theme('fontFamily.lora'),
+            '--tw-prose-body': theme('colors.gray[800]'),
+            '--tw-prose-headings': theme('colors.gray[900]'),
+            'line-height': '1.85',
+            'max-width': '65ch',
+          },
+        },
+      }),
+    },
   },
   plugins: [
     require("tailwindcss-animate"),

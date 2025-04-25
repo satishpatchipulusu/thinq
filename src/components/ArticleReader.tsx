@@ -43,10 +43,10 @@ const ArticleReader = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
-      <div className="max-w-2xl mx-auto space-y-8">
-        <div className="space-y-4">
-          <h1 className="text-3xl font-semibold text-gray-900">Reader View</h1>
+    <div className="min-h-screen bg-white p-4 md:p-8">
+      <div className="max-w-2xl mx-auto space-y-12">
+        <div className="space-y-6">
+          <h1 className="font-lora text-3xl font-semibold text-gray-900">Reader View</h1>
           <div className="flex gap-2">
             <Input
               type="url"
@@ -58,6 +58,8 @@ const ArticleReader = () => {
             <Button 
               onClick={fetchArticle}
               disabled={loading}
+              variant="outline"
+              className="bg-white hover:bg-gray-50 text-gray-900 border-gray-200"
             >
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Read"}
             </Button>
@@ -65,12 +67,12 @@ const ArticleReader = () => {
         </div>
 
         {article && (
-          <Card className="p-8 bg-white shadow-sm">
-            <article className="prose prose-gray max-w-none">
-              <h1 className="text-2xl font-semibold mb-6 text-gray-900">
+          <Card className="p-12 bg-white shadow-none border-0">
+            <article className="prose font-lora">
+              <h1 className="text-3xl font-semibold mb-8 text-gray-900">
                 {article.title}
               </h1>
-              <div className="text-gray-700 leading-relaxed">
+              <div className="text-gray-800 leading-relaxed">
                 {article.content}
               </div>
             </article>
