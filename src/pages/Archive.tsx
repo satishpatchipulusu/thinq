@@ -57,7 +57,7 @@ const Archive = () => {
         <blockquote className="mb-8 text-gray-700 italic border-l-4 pl-4 border-gray-200">
           "if it's wisdom you are after, you are going to spend a lot of time sitting on your ass and reading."
           <footer className="mt-2 text-gray-600">
-            — charlie munger
+            — charlie MUNGER
           </footer>
         </blockquote>
         <div className="flex justify-between items-center mb-8">
